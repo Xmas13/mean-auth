@@ -47,9 +47,13 @@ require('./config/passport')(passport);
 app.use('/users', users);
 
 // Set Index Route
-app.get('/', (req, res, next) => {
-  res.send('Invalid Request');
+app.get('/', (req, res) => {
+
 });
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+})
 
 // Sets listening port
 app.listen(port, () => {
